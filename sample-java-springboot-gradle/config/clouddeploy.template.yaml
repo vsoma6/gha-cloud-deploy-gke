@@ -35,7 +35,7 @@ serialPipeline:
                 routeUpdateWaitTime: "60s"
                 podSelectorLabel: "app"
           canaryDeployment:
-            percentages: [25, 50]
+            percentages: [25] ### [25, 50]
             verify: true
 ---
 apiVersion: deploy.cloud.google.com/v1
@@ -85,7 +85,7 @@ rules:
     name: "advance-rollout-1"
     sourcePhases: ["canary-25"]
     wait: 1m
-- advanceRolloutRule:
-    name: "advance-rollout-2"
-    sourcePhases: ["canary-50"]
-    wait: 1m
+# - advanceRolloutRule:
+#     name: "advance-rollout-2"
+#     sourcePhases: ["canary-50"]
+#     wait: 1m
