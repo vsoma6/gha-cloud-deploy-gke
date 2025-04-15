@@ -19,7 +19,7 @@ public class DemoApplication {
 
     @GetMapping("/")
     String index() {
-        return "hello, world - v3.0 - " + podName;
+        return "hello, world - v0.1 - " + podName;
     }
 
 }
