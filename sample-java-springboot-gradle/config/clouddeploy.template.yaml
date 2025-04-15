@@ -54,37 +54,39 @@ description: 'Production target'
 gke:
   cluster: projects/${PROJECT_ID}/locations/${REGION}/clusters/cluster-prod
 ---
-apiVersion: deploy.cloud.google.com/v1
-kind: Automation
-metadata:
-  name: gke-deploy-app/promote
-description: promotes a release
-suspended: false
-serviceAccount: 370258670136-compute@developer.gserviceaccount.com
-selector:
-  targets:
-  - id: staging
-rules:
-- promoteReleaseRule:
-    name: "promote-release"
-    wait: 1m
-    toTargetId: "@next"
----
-apiVersion: deploy.cloud.google.com/v1
-kind: Automation
-metadata:
-  name: gke-deploy-app/advance
-description: advances a rollout
-suspended: false
-serviceAccount: 370258670136-compute@developer.gserviceaccount.com
-selector:
-  targets:
-  - id: prod
-rules:
-- advanceRolloutRule:
-    name: "advance-rollout-1"
-    sourcePhases: ["canary-25"]
-    wait: 1m
+# apiVersion: deploy.cloud.google.com/v1
+# kind: Automation
+# metadata:
+#   name: gke-deploy-app/promote
+# description: promotes a release
+# suspended: false
+# serviceAccount: 370258670136-compute@developer.gserviceaccount.com
+# selector:
+#   targets:
+#   - id: staging
+# rules:
+# - promoteReleaseRule:
+#     name: "promote-release"
+#     wait: 1m
+#     toTargetId: "@next"
+# ---
+# apiVersion: deploy.cloud.google.com/v1
+# kind: Automation
+# metadata:
+#   name: gke-deploy-app/advance
+# description: advances a rollout
+# suspended: false
+# serviceAccount: 370258670136-compute@developer.gserviceaccount.com
+# selector:
+#   targets:
+#   - id: prod
+# rules:
+# - advanceRolloutRule:
+#     name: "advance-rollout-1"
+#     sourcePhases: ["canary-25"]
+#     wait: 1m
+#####
+
 # - advanceRolloutRule:
 #     name: "advance-rollout-2"
 #     sourcePhases: ["canary-50"]
